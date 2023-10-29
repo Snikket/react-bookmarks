@@ -1,14 +1,40 @@
-import Post from "./Post"
-import classes from './PostsList.module.css';
+import NewPost from "./NewPost";
+import Post from "./Post";
+import classes from "./PostsList.module.css";
+import Modal from "./Modal";
+import { useState } from "react";
 
-function PostsList(){
-    return (
+function PostsList({ isPosting, onStopPosting }) {
+  const [posts, setPosts] = useState([]);
+
+  function addPostHandler(postData) {
+    setPosts((existingPosts) => [postData, ...existingPosts]);
+  }
+
+  return (
+    <>
+      {isPosting && (
+        <Modal onClose={onStopPosting}>
+          <NewPost onCancel={onStopPosting} onAddPost={addPostHandler} />
+        </Modal>
+      )}
+
+      {posts.length > 0 && (
         <ul className={classes.posts}>
-                <Post author='Maximillian' body='HP and the Philosopher Stone'/>
-                <Post author='Dominik' body='Yellowface'/>
-                <Post author='Mary' body='A series of unfortunate events'/>
+          {posts.map((post) => (
+            <Post author={post.author} body={post.body} />
+          ))}
         </ul>
-    )
+      )}
+
+      {posts.length === 0 && (
+        <div style={{ textAlign: "center", color: "white" }}>
+          <h2>There are no posts yet!</h2>
+          <p>Start adding some!</p>
+        </div>
+      )}
+    </>
+  );
 }
 
 export default PostsList;
