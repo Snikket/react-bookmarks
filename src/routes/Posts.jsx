@@ -1,10 +1,10 @@
-import NewPost from "./components/NewPost";
-import Post from "./components/Post";
-import PostsList from "./components/PostsList";
-import MainHeader from "./components/MainHeader";
+import NewPost from "../components/NewPost";
+import Post from "../components/Post";
+import PostsList from "../components/PostsList";
+import MainHeader from "../components/MainHeader";
 import { useState } from "react";
 
-function App() {
+function Posts() {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
   function showModalHandler() {
@@ -25,4 +25,4 @@ function App() {
   );
 }
 
-export default App;
+export default Posts;
