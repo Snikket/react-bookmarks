@@ -1,25 +1,16 @@
-import NewPost from "../components/NewPost";
+import NewPost from "./NewPost";
 import Post from "../components/Post";
 import PostsList from "../components/PostsList";
 import MainHeader from "../components/MainHeader";
 import { useState } from "react";
-
+import { Outlet } from "react-router-dom";
 function Posts() {
-  const [isModalVisible, setIsModalVisible] = useState(false);
-
-  function showModalHandler() {
-    setIsModalVisible(true);
-  }
-
-  function hideModalHandler() {
-    setIsModalVisible(false);
-  }
 
   return (
     <>
-      <MainHeader onCreatePost={showModalHandler}/>
+    <Outlet></Outlet>
       <main>
-        <PostsList onStopPosting={hideModalHandler} isPosting={isModalVisible}/>
+        <PostsList/>
       </main>
     </>
   );

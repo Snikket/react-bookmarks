@@ -10,10 +10,10 @@ function MainHeader({ onCreatePost }) {
         React Poster
       </h1>
       <p>
-        <button className={classes.button} onClick={onCreatePost}>
+        <a className={classes.button}>
           <MdPostAdd size={18} />
           New Post
-        </button>
+        </a>
       </p>
     </header>
   );
