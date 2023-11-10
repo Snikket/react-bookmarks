@@ -37,14 +37,15 @@ function NewPost(props) {
         <input type="text" id="name" required onChange={authorChangeHandler} />
       </p>
       <p className={classes.actions}>
-        <button type="button" onClick={props.onCancel}>
+        <Link to=".." type="button" >
           Cancel
-        </button>
+        </Link>
         <button>Submit</button>
       </p>
     </form>
     </Modal>
   );
 }
+import { Link } from "react-router-dom";
 
 export default NewPost;
